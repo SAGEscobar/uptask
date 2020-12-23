@@ -1,8 +1,9 @@
+<?php include 'includes/funciones/secion.php'; ?>
+
 <?php include_once 'includes/templates/header.php'; ?>
-<div class="barra">
-    <h1>UpTask - Administración de Proyectos</h1>
-    <a href="#">Cerrar Sesión</a>
-</div>
+<body>
+
+<?php include_once 'includes/templates/bar.php'; ?>
 
 <div class="contenedor">
     <aside class="contenedor-proyectos">
