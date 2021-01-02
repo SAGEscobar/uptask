@@ -5,10 +5,10 @@ $accion = $_POST['accion'];
 
 if($accion=='crear'){
     include_once '../funciones/conexion.php';
-
+    session_start();
     try{
-        $stmt = $conn->prepare("INSERT INTO proyectos (nombre) values (?)");
-        $stmt->bind_param("s", $proyecto);
+        $stmt = $conn->prepare("INSERT INTO proyectos (nombre, id_usuario) values (?, ?)");
+        $stmt->bind_param("si", $proyecto, $_SESSION['id']);
         $stmt->execute();
         if($stmt->affected_rows > 0){
             $respuesta = array(

@@ -1,6 +1,8 @@
 <?php
 include 'includes/funciones/secion.php';
-include 'includes/funciones/funciones.php';
+
+header("access-control-allow-origin: *");
+
 include_once 'includes/templates/header.php';
 ?>
 <body>
@@ -62,7 +64,7 @@ include_once 'includes/templates/header.php';
                                 </li>
                         <?php endforeach; ?>
                     <?php else: ?>
-                        <ul><p>No hay tareas en este proyecto</p></ul>
+                        <li id="no-tareas"><p>No hay tareas en este proyecto</p></li>
                     <?php endif; ?>
             </ul>
         </div>

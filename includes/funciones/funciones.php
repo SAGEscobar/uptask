@@ -7,9 +7,9 @@
 
     function getProyectos(){
         include 'conexion.php';
-
+        session_start();
         try{
-            return $conn->query('SELECT id, nombre FROM proyectos');
+            return $conn->query("SELECT id, nombre FROM proyectos where id_usuario = {$_SESSION['id']}");
         }catch(Exeption $e){
             echo "Error: " - $e->getMessage();
             return false;

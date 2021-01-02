@@ -16,6 +16,10 @@ if($accion=='crear'){
         $stmt->bind_param("ss", $usuario, $hash_password);
         $stmt->execute();
         if($stmt->affected_rows > 0){
+            session_start();
+                $_SESSION['nombre'] = $usuario;
+                $_SESSION['id'] = $stmt->insert_id;
+                $_SESSION['login'] = true;
             $respuesta = array(
                 'respuesta' => 'correcto',
                 'id_incertado' => $stmt->insert_id,

@@ -95,7 +95,11 @@ function nuevaTarea(e){
                     `;
                     newTask.id = 'tarea:'+respuesta.id_incertado;
                     newTask.classList.add('tarea');
-                    document.querySelector('.listado-pendientes ul').appendChild(newTask);
+                    listadoPendientes = document.querySelector('.listado-pendientes ul');
+                    if(document.querySelector('li#no-tareas')){
+                        document.querySelector('li#no-tareas').remove();
+                    }
+                    listadoPendientes.appendChild(newTask);
                     document.querySelector('form.agregar-tarea').reset();
                 }
             }
@@ -156,7 +160,11 @@ function eliminarTarea(tarea){
         if(this.status == 200){
             respuesta = JSON.parse(this.responseText);
             if(respuesta.respuesta === 'correcto'){
-                tarea.parentElement.parentElement.parentElement.removeChild(tarea.parentElement.parentElement);
+                lista = tarea.parentElement.parentElement.parentElement;
+                lista.removeChild(tarea.parentElement.parentElement);
+                if(lista.childElementCount < 1){
+                    lista.innerHTML = '<li><p id="no-tareas">No hay tareas en este proyecto</p></li>';
+                }
             }
         }
     }

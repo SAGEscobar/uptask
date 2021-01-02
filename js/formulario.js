@@ -37,8 +37,11 @@ function validarRegistro(e){
                             title: 'Usuario Creado',
                             text: 'El usuario ha sido creado correctamente',
                             type: 'success'
-                        })
+                        }).then((result) => {
+                            window.location.href = 'index.php';
+                          })
                         document.querySelector('#formulario').reset();
+
                     }else if(respuesta.tipo === 'login'){
                         window.location.href = 'index.php';
                     }else{
